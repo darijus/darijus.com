@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="robots" content="noindex,nofollow">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Darijus - Software Engineer</title>
+    <link rel="stylesheet" href="styles/reset.css">
+    <link rel="stylesheet" href="styles/style.css">
+    <script src="scripts/clipboard.min.js"></script>
+</head>
+<body>
+    <section role="banner">
+        <h1>Darijus Veselis</h1>
+        <p>Software Engineer</p>
+        <ul>
+            <li>
+                <img src="assets/location.svg" alt="Pin"/> 
+                <span>London, UK</span>
+            </li>
+            <li>
+                <img src="assets/email.svg" alt="Envelope"/> 
+                <button role="button" class="email" data-clipboard-text="darijusveselis@gmail.com" onmouseover="showTooltip(this)" onmouseleave="hideTooltip(this)">darijusveselis@gmail.com <span role="tooltip" class="tooltip" id="tooltip">Copy to clipboard</span></button>
+            </li>
+        </ul>
+        <a role="link" target="_blank" href="https://linkedin.com/in/darijusveselis" title="View Linkedin profile">LinkedIn</a>
+        <a role="link" target="_blank" href="https://docs.google.com/document/d/1qgZ9oRk_s5SJ1A0ZqRrm9XUZPtcUY8pLNuYfDFYZ6Uk" title="View CV document">Download CV</a>
+    </section>
+    <script>
+        var clipboard = new ClipboardJS('.email');
+        var tooltip = document.getElementById("tooltip")
+
+        function showTooltip(e) {
+            tooltip.classList.add("visible");
+        }
+
+        function hideTooltip(e) {
+            tooltip.classList.remove("visible");
+        }
+
+        clipboard.on('success', function(e) {
+            tooltip.innerHTML = "Copied!";
+
+            setTimeout(function(){ 
+                tooltip.innerHTML = "Copy to clipboard";
+                this.hideTooltip(this);
+            }, 1000);
+
+            e.clearSelection();
+        });
+    </script>
+</body>
